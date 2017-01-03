@@ -7,8 +7,32 @@ public class DoubleListNode<T> {
 	
 	public DoubleListNode(T payloads){
 		payload = payloads;
-		nextNode = null;
-		previousNode = null;
 	}
+
+	public T getPayload() {
+		return payload;
+	}
+
+	public void setPayload(T payload) {
+		this.payload = payload;
+	}
+
+	public DoubleListNode<T> getNextNode() {
+		return nextNode;
+	}
+
+	public void setNextNode(DoubleListNode<T> nextNode) {
+		this.nextNode = nextNode;
+	}
+
+	public DoubleListNode<T> getPreviousNode() {
+		return previousNode;
+	}
+
+	public void setPreviousNode(DoubleListNode<T> previousNode) {
+		this.previousNode = previousNode;
+	}
+	
+	
 	
 }
