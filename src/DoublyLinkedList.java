@@ -10,6 +10,7 @@ public class DoublyLinkedList<T> {
 		numObjects = 0;
 	}
 	
+	//Adds an element to the front of the list
 	public void addFront(T addElement){
 		DoubleListNode<T> addNode = new DoubleListNode<T>(addElement);
 		if(numObjects == 0){
@@ -24,18 +25,61 @@ public class DoublyLinkedList<T> {
 		}
 	}
 	
+	/*Adds an element to the back of the list
+	Use cases - 
+	1) empty list
+	2) one item in list
+	*/
 	public void addBack(T addElement){
 		DoubleListNode<T> addNode = new DoubleListNode<T>(addElement);
+		//Empty list
 		if(numObjects == 0){
 			head = tail = addNode;
 			numObjects++;
 		}
+		//mulitple items in list
 		else{
 			tail.setNextNode(addNode);
 			addNode.setPreviousNode(tail);
 			tail = addNode;
 			numObjects++;
 		}
+	}
+	
+	//Searches for a node containing given element called searchElement, 
+	//and adds a node created with addElement after that node.
+	public void addSearch(T addElement, T searchElement){
+		DoubleListNode<T> addNode = new DoubleListNode<T>(addElement);
+		if(numObjects == 0){
+			System.out.println("Empty list, node with given search element not found.");
+			return;
+		}
+		else if(numObjects == 1){
+			DoubleListNode<T> currentNode = head;
+			if(currentNode.getPayload() == searchElement){
+				System.out.println("Node with given search element found!");
+				addBack(searchElement);
+			}
+			else{
+				System.out.println("Node with given search element not found.");
+				return;
+			}
+		}
+		else{
+			DoubleListNode<T> currentNode = head;
+			while((currentNode.getPayload() != searchElement) && currentNode.getNextNode() != null){
+				currentNode = currentNode.getNextNode();
+			}
+			if(currentNode.getPayload() == searchElement){
+				if(currentNode == head || currentNode == tail){
+					addBack(currentNode.getPayload());
+				}
+			}
+			
+		}
+		
+		
+		
 	}
 
 	public T getFirst() {
@@ -49,4 +93,6 @@ public class DoublyLinkedList<T> {
 	public int getLength() {
 		return numObjects;
 	}
+	
+	
 }
