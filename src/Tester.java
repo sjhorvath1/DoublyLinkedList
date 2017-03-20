@@ -49,4 +49,12 @@ public class Tester {
 		testList.addFront("Bob");
 		assertEquals(2, testList.getLength());
 	}
+	
+	@Test
+	//Tests the addSearch method
+	public void testAddSearch(){
+		DoublyLinkedList<String> testList = new DoublyLinkedList<String>();
+		testList.addFront("Jim");
+		testList.addFront("Bob");
+	}
 }

@@ -71,15 +71,16 @@ public class DoublyLinkedList<T> {
 				currentNode = currentNode.getNextNode();
 			}
 			if(currentNode.getPayload() == searchElement){
-				if(currentNode == head || currentNode == tail){
+				if(currentNode.getNextNode() == null){
 					addBack(currentNode.getPayload());
 				}
+				else{
+					DoubleListNode<T> tempNode = currentNode.getNextNode();
+					currentNode.setNextNode(addNode);
+					addNode.setNextNode(tempNode);
+				}
 			}
-			
-		}
-		
-		
-		
+		}	
 	}
 
 	public T getFirst() {
@@ -92,6 +93,11 @@ public class DoublyLinkedList<T> {
 	
 	public int getLength() {
 		return numObjects;
+	}
+
+	public T getElementAt(int i) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 	
